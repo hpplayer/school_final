@@ -25,11 +25,11 @@ public class Score {
 
 	
 	
-	public int getID() {
+	public long getID() {
 		return ID;
 	}
 
-	public void setID(int iD) {
+	public void setID(long iD) {
 		ID = iD;
 	}
 
