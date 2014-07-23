@@ -1,11 +1,28 @@
 package com.intern.project.POJO;
 
-public class Score {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity(name = "score")
+public class Score {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID")
+	private long ID;
+	
+	@Column (name = "Student_ID")
 	private long student_ID;
+	
+	@Column (name = "course_ID")
 	private long course_ID;
+	
+	@Column (name = "course_Score")
 	private int score;
-	private int ID;
+
 	
 	
 	public int getID() {

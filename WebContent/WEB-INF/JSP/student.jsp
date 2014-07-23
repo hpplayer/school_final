@@ -7,7 +7,7 @@
 <title>My First Spring MVC project</title>
 </head>
 <body>
-	<h1>First Message : ${message}</h1>
-	<h1>Course Count : ${message2}</h1>
+	<h1>Student ID 1 and his name : ${message}</h1>
+	<h1>Student Count : ${message2}</h1>
 </body>
 </html>

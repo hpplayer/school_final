@@ -1,25 +1,39 @@
 package com.intern.project.POJO;
 
 import java.util.Date;
-//import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+
+@Entity(name = "student")
 public class Student {
-	private long ID;
-	private String name; 
-	private String sex;
-	private Date Bir;
-	private String major;
-	private String Adr;
-	private String Remarks;
-	private List courses;
 	
-	public List getCourses() {
-		return courses;
-	}
-	public void setCourses(List courses) {
-		this.courses = courses;
-	}
+	@Id
+	@Column (name = "ID")
+	private long ID;
+	
+	@Column (name = "Name")
+	private String name; 
+	
+	@Column (name = "Sex")
+	private String sex;
+	
+	@Column (name = "Bir")
+	private Date Bir;
+	
+	@Column (name = "Class")
+	private String major;
+	
+	@Column (name = "Adr")
+	private String Adr;
+	
+	@Column (name = "Remarks")
+	private String Remarks;
+	
+
 	public long getID() {
 		return ID;
 	}

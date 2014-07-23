@@ -25,41 +25,25 @@ import com.intern.project.dao.StudentDao;
 
 public class StudentDaoImpl implements StudentDao{
 	
-	private Session session;
+	private SessionFactory sessionFactory;
 	
-	public StudentDaoImpl(){
-		//ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:Spring_hibernate.xml");
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("file:E:/workspace/school_new/src/main/java/com/intern/project/resources/Spring_hibernate.xml");
-		SessionFactory sessionFactory  = (SessionFactory) ctx.getBean("sessionFactory");
-		session = sessionFactory.openSession();
-	}
 	
 	public void add(Student t) throws Exception {
-		// TODO Auto-generated method stub
-
-		Transaction tx = session.beginTransaction();
-	    session.save(t);
-	    tx.commit();	
+		sessionFactory.getCurrentSession().save(t);
 	}
 
 	public void delete(Student t) throws Exception {
-		Transaction tx = session.beginTransaction();
-	    session.delete(t);
-	    tx.commit();
+		sessionFactory.getCurrentSession().delete(t);
 		
 	}
 
 	public void deleteById(long id) throws Exception {
-		Transaction tx = session.beginTransaction();
-		session.delete(this.findByID(id));
-	    tx.commit();
-		
+		sessionFactory.getCurrentSession().delete(this.findByID(id));
 	}
 
 
 	
 	public void update(Student t) throws Exception {
-		Transaction tx = session.beginTransaction();
 		long ID = t.getID();
 		Student tempo = findByID(ID);
 		tempo.setName(t.getName());
@@ -68,29 +52,31 @@ public class StudentDaoImpl implements StudentDao{
 		tempo.setMajor(t.getMajor());
 		tempo.setRemarks(t.getRemarks());
 		tempo.setSex(t.getSex());
-		session.update(tempo);
-	    tx.commit();
+		sessionFactory.getCurrentSession().update(tempo);
 	    
 	}
 
 	public Student findByID(long iD) throws Exception {
-		Student stu = (Student)session.get(Student.class, iD);
+		Student stu = (Student)sessionFactory.getCurrentSession().get(Student.class, iD);
 		return stu;
 	}
 
 	public List<Student> findAll() throws Exception {
 
 		
-        Transaction tx = session.beginTransaction();
-        Criteria cr = session.createCriteria(Student.class);
+        Criteria cr = sessionFactory.getCurrentSession().createCriteria(Student.class);
         cr.addOrder(Order.asc("ID"));
         List<Student> students =cr.list();
-       // List<Student> students = (List<Student>)session.createQuery("from Student").list();
-      //  System.out.println(students.get(0).getName());
-       // System.out.println(students.get(1).getName());
-        
-        tx.commit();
+
         return students;
+	}
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 	}
 
 

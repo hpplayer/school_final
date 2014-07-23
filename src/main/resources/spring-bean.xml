@@ -16,4 +16,22 @@
      <bean id="courseServiceImpl" class="com.intern.project.service.courseServiceImpl">
 		<property name="courseDAOImpl" ref="courseDaoImpl"></property>
 	</bean>
+	
+	<bean id="scoreDAOImpl" class="com.intern.project.daoImpl.ScoreDaoImpl">
+		  <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+     <bean id="scoreServiceImpl" class="com.intern.project.service.scoreServiceImpl">
+		<property name="scoreDaoImpl" ref="scoreDAOImpl"></property>
+	</bean>
+	
+	<bean id="studentDaoImpl" class="com.intern.project.daoImpl.StudentDaoImpl">
+		  <property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+     <bean id="studentServiceImpl" class="com.intern.project.service.studentServiceImpl">
+		<property name="studentDAOImpl" ref="studentDaoImpl"></property>
+	</bean>
+	
+	
 </beans>

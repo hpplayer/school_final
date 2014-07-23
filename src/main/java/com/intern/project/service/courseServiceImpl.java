@@ -13,10 +13,10 @@ import com.intern.project.POJO.Course;
 import com.intern.project.dao.*;
 import com.intern.project.daoImpl.CourseDaoImpl;
 
-//@Service
+@Service
 
 public class courseServiceImpl implements courseService{
-	//@Autowired
+	@Autowired
 	private CourseDaoImpl courseDAOImpl;
 
 	public CourseDaoImpl getCourseDAOImpl() {
